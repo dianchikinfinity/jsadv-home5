@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    .popup {
+    position: fixed;
+    padding: 5px;
+    font-size: 15px;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    border: 1px solid gray;
+    background: gray;
+    }
+  </style>
+  <script>
+    window.onload = function () {
+      var mainDiv = document.getElementById("main-div");
+      mainDiv.onmouseover = function(e) {
+        var target = e && e.target || window.event.srcElement;
+        var dataToggleId = target.getAttribute('data-tooltip');
+        if (!dataToggleId) {
+            return
+        };
+        var newDiv = document.createElement("div");
+        newDiv.classList.add("popup");
+        newDiv.innerHTML= dataToggleId;
+        document.body.append(newDiv);
+        };
+};
+</script>
+</head>
+<body>
+  <div id="main-div">
+    <span data-tooltip="наведите">наведите</span> 
+    <span data-tooltip="для">для</span>
+    <span data-tooltip="подсказки">подсказки</span>
+</div>
+</body>
+</html>
